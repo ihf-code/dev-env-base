@@ -4,11 +4,11 @@ get:
 	tar -xvzf code-server.tar.gz -C files/code-server --strip-components 1
 
 build: 
-	docker build . -t code-base:latest
+	docker build . -t ${IMAGE}:${TAG} 
 
 tag: build
-	docker tag code-base:latest ihfcode/code-base:latest
+	docker tag ${IMAGE}:${TAG} ${REPO}/${IMAGE}:${TAG}
 
 push: tag
-	docker push ihfcode/code-base:latest
+	docker push ${REPO}/${IMAGE}:${TAG}
 
