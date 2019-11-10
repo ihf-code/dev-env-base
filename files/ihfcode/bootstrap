@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+dumb-init /usr/local/bin/ihfcode/code-server /home/coder/project --allow-http --no-auth
