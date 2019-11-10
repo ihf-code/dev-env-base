@@ -5,8 +5,10 @@ get:
 
 build: 
 	docker build . -t code-base:latest
+
 tag: build
 	docker tag code-base:latest ihfcode/code-base:latest
+
 push: tag
 	docker push ihfcode/code-base:latest
 
