@@ -53,3 +53,5 @@ if ! shopt -oq posix; then
   fi
 fi
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/local/bin/ihfcode:/usr/sbin:/usr/bin:/sbin:/bin:~/.local/bin
+
+cat /etc/banner.txt | colourit.sh 45

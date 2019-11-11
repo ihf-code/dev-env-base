@@ -1,0 +1,12 @@
+██╗  ██╗██████╗ ███╗   ███╗ ██████╗
+██║ ██╔╝██╔══██╗████╗ ████║██╔════╝
+█████╔╝ ██████╔╝██╔████╔██║██║  ███╗
+██╔═██╗ ██╔═══╝ ██║╚██╔╝██║██║   ██║
+██║  ██╗██║     ██║ ╚═╝ ██║╚██████╔╝
+╚═╝  ╚═╝╚═╝     ╚═╝     ╚═╝ ╚═════╝
+
+Top Tips:
+
+* Press the Up arrow to access the last command(s)
+* Press tab to complete the word you are typing.
+* Press F5 to run your code.

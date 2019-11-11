@@ -13,7 +13,9 @@ RUN apt-get update -y && \
 	vim \
 	git \
 	tig \
-	nano
+	nano \
+	bsdtar \
+	figlet
 
 ENV LC_ALL=en_US.UTF-8
 RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment && \
@@ -21,19 +23,22 @@ RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment && \
     echo "LANG=en_US.UTF-8" >> /etc/locale.conf && \
     locale-gen en_US.UTF-8
 
-RUN mkdir -p /usr/local/bin/ihfcode
+RUN mkdir -p /usr/local/bin/ihfcode && \
+    mkdir -p /usr/local/bin/ihfcode/extensions
+
 COPY files/code-server/code-server /usr/local/bin/ihfcode
 COPY files/ihfcode/* /usr/local/bin/ihfcode/
 COPY files/etc/banner.txt /etc/banner.txt
 COPY files/etc/skel/* /etc/skel/
 
-RUN chmod 755 /usr/local/bin/ihfcode/*
+RUN chmod 755 /usr/local/bin/ihfcode/* && \
+    chmod 777 /usr/local/bin/ihfcode/extensions
 
 RUN adduser --gecos '' --shell /bin/bash --disabled-password coder && \
     mkdir -p /home/coder/project && \
+    mkdir -p /home/coder/.local/share/code-server/User && \
     mkdir -p /home/coder/.code-server/extensions && \
     mkdir -p /home/coder/.local/share/code-server/extensions && \
-    mkdir -p /home/coder/.local/share/code-server/User && \
     cp /usr/local/bin/ihfcode/settings.json /home/coder/.local/share/code-server/User/settings.json && \
     chown coder:coder -R /home/coder
 
