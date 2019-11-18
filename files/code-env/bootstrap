@@ -11,7 +11,7 @@ done
 
 STAGE2=/usr/local/bin/code-env/stage2.sh
 if [ -f $STAGE2 ]; then
-  source $STAGE2;
+  source $STAGE2
 fi
 
 dumb-init /usr/local/bin/code-env/code-server /home/coder/project --auth none

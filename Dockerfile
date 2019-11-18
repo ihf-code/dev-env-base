@@ -25,6 +25,7 @@ RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment && \
 
 RUN mkdir -p /usr/local/bin/code-env/extensions
 
+COPY files/extensions/* /usr/local/bin/code-env/extensions/
 COPY files/code-server/code-server /usr/local/bin/code-env
 COPY files/code-env/* /usr/local/bin/code-env/
 COPY files/etc/banner.txt /etc/banner.txt

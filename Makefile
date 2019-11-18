@@ -12,3 +12,5 @@ tag: build
 push: tag
 	docker push ${REPO}/${IMAGE}:${TAG}
 
+test:
+	docker run -it -p 8080:8080 ${REPO}/${IMAGE}:${TAG}
