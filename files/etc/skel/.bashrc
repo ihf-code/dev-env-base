@@ -52,6 +52,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/local/bin/ihfcode:/usr/sbin:/usr/bin:/sbin:/bin:~/.local/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/local/bin/code-env:/usr/sbin:/usr/bin:/sbin:/bin:~/.local/bin
 
 cat /etc/banner.txt | colourit 45

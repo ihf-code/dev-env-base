@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-FILES=/usr/local/bin/ihfcode/extensions
+FILES=/usr/local/bin/code-env/extensions
 for f in $FILES/*.vsix; do
   [ -e "$f" ] || continue
   f0=$(basename -a $f)
@@ -9,4 +9,9 @@ for f in $FILES/*.vsix; do
   mv $FILES/extension /home/coder/.local/share/code-server/extensions/$f1
 done
 
-dumb-init /usr/local/bin/ihfcode/code-server /home/coder/project --auth none
+STAGE2=/usr/local/bin/code-env/stage2.sh
+if [ -f $STAGE2 ]; then
+  source $STAGE2;
+fi
+
+dumb-init /usr/local/bin/code-env/code-server /home/coder/project --auth none

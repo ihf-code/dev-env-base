@@ -23,25 +23,24 @@ RUN echo "LC_ALL=en_US.UTF-8" >> /etc/environment && \
     echo "LANG=en_US.UTF-8" >> /etc/locale.conf && \
     locale-gen en_US.UTF-8
 
-RUN mkdir -p /usr/local/bin/ihfcode && \
-    mkdir -p /usr/local/bin/ihfcode/extensions
+RUN mkdir -p /usr/local/bin/code-env/extensions
 
-COPY files/code-server/code-server /usr/local/bin/ihfcode
-COPY files/ihfcode/* /usr/local/bin/ihfcode/
+COPY files/code-server/code-server /usr/local/bin/code-env
+COPY files/code-env/* /usr/local/bin/code-env/
 COPY files/etc/banner.txt /etc/banner.txt
 COPY files/etc/skel/* /etc/skel/
 
-RUN chmod 755 /usr/local/bin/ihfcode/* && \
-    chmod 777 /usr/local/bin/ihfcode/extensions
+RUN chmod 755 /usr/local/bin/code-env/* && \
+    chmod 777 /usr/local/bin/code-env/extensions
 
 RUN adduser --gecos '' --shell /bin/bash --disabled-password coder && \
     mkdir -p /home/coder/project && \
     mkdir -p /home/coder/.local/share/code-server/User && \
     mkdir -p /home/coder/.code-server/extensions && \
     mkdir -p /home/coder/.local/share/code-server/extensions && \
-    cp /usr/local/bin/ihfcode/settings.json /home/coder/.local/share/code-server/User/settings.json && \
+    cp /usr/local/bin/code-env/settings.json /home/coder/.local/share/code-server/User/settings.json && \
     chown coder:coder -R /home/coder
 
 VOLUME [ "/home/coder/project" ]
 EXPOSE 8080
-ENTRYPOINT ["/usr/local/bin/ihfcode/bootstrap"]
+ENTRYPOINT ["/usr/local/bin/code-env/bootstrap"]
