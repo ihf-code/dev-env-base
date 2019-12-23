@@ -15,6 +15,7 @@ RUN apt-get update -y && \
 	tig \
 	nano \
 	bsdtar \
+	sudo \
 	figlet
 
 ENV LC_ALL=en_US.UTF-8
@@ -41,6 +42,8 @@ RUN adduser --gecos '' --shell /bin/bash --disabled-password coder && \
     mkdir -p /home/coder/.local/share/code-server/extensions && \
     cp /usr/local/bin/code-env/settings.json /home/coder/.local/share/code-server/User/settings.json && \
     chown coder:coder -R /home/coder
+
+RUN echo "coder         ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 VOLUME [ "/home/coder/project" ]
 EXPOSE 8080

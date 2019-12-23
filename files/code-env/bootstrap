@@ -14,6 +14,6 @@ if [ -f $STAGE2 ]; then
   source $STAGE2
 fi
 
-chmod 777 /home/coder/project
+sudo chmod 777 /home/coder/project
 
 dumb-init /usr/local/bin/code-env/code-server /home/coder/project --auth none
